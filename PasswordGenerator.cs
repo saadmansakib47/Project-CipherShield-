@@ -57,5 +57,26 @@ namespace CipherShield_Beta0._2
             Console.WriteLine("\n\nPress any key to continue.");
             Console.ReadKey();
         }
+        private static bool ReadYesNoInput(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                ConsoleKeyInfo key = Console.ReadKey(intercept: true);
+        
+                if (key.Key == ConsoleKey.Y)
+                {
+                    Console.WriteLine('y');
+                    return true;
+                }
+                if (key.Key == ConsoleKey.N)
+                {
+                    Console.WriteLine('n');
+                    return false;
+                }
+        
+                Console.WriteLine("\nInvalid input. Please enter 'y' for yes or 'n' for no.");
+            }
+        }
     }
 }
