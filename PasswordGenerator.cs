@@ -22,6 +22,10 @@ namespace CipherShield_Beta0._2
                     {
                         Console.WriteLine("Password length can't be so small. Please enter a length greater than 4.");
                     }
+                    else if(length >= 15)
+                    {
+                        Console.WriteLine("Password length can't be so large. Please enter a length lesser than 15.");
+                    }
                     else
                     {
                         break;
