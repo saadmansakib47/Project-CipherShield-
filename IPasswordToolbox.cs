@@ -31,7 +31,8 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
-                        PasswordGenerator.GenerateCustomizedPassword();
+                        PasswordGenerator passwordGenerator = new PasswordGenerator();
+                        passwordGenerator.GenerateCustomizedPassword();
                         break;
                     case "2":
                         StrengthChecker.PasswordStrengthReport();
