@@ -26,7 +26,8 @@ public class KeyboardPatternDetect : IStrengthCheckerAlgorithms
         "asdfghjkl",
         "zxcvbnm",
         "1234567890",
-        "password"
+        "password",
+        "1qaz2wsx" 
     };
 
         foreach (string pattern in patterns)
