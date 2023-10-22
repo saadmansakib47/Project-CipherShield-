@@ -255,7 +255,7 @@ namespace CipherShield_Beta
             ConsoleKeyInfo key = Console.ReadKey(intercept: true);
             if (key.Key == ConsoleKey.Tab)
             {
-                ColorConsole.WriteLine("\nScore < 460 : Very Weak\r\n460 ≤ Score < 500 : Weak\r\n500 ≤ Score < 600 :Moderate\r\n600 ≤ Score < 700 :Strong\r\n700 ≤ Score < 800 : Very Strong", ConsoleColor.DarkGray);
+                ColorConsole.WriteLine("\nScore < 460 : Very Weak\r\n460 ≤ Score < 500 : Weak\r\n500 ≤ Score < 600 : Moderate\r\n600 ≤ Score < 700 : Strong\r\n700 ≤ Score < 800 : Very Strong", ConsoleColor.DarkGray);
                 Console.WriteLine("\nPress any key to continue.");
                 Console.ReadKey();
             }
