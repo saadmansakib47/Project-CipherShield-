@@ -31,10 +31,6 @@ namespace CipherShield_Beta
                     case "2":
                         break;
                     case "3":
-                        break;
-                    case "4":
-                        break;
-                    case "5":
                         Console.Clear();
                         return; // Return to the Previous Menu.
                     default:
@@ -47,4 +43,3 @@ namespace CipherShield_Beta
         }
     }
 }
-

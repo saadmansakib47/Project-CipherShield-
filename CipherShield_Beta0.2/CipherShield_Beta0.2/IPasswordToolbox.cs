@@ -16,12 +16,11 @@ namespace CipherShield_Beta
             {
                 Console.Clear();
                 Console.WriteLine("Password Toolbox");
-                Console.WriteLine("----------------");
                 Console.WriteLine("");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine(" Password Generator");
+                Console.WriteLine(" Password Creator");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
-                Console.WriteLine(" Password Strength-Checker");
+                Console.WriteLine(" Password Strength Checker");
                 ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Main Menu");
                 Console.WriteLine("");
@@ -41,7 +40,7 @@ namespace CipherShield_Beta
                         Console.Clear();
                         return; // Return to the main menu.
                     default:
-                        ColorConsole.WriteError("Invalid option. Please try again.");
+                        ColorConsole.Write("Invalid option. Please try again.", ConsoleColor.Red);
                         Console.ReadKey();
                         break;
                 }
