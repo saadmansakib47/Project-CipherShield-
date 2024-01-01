@@ -47,7 +47,7 @@ class Program
                     IPasswordToolbox.PasswordToolbox();
                     break;
                 case "2":
-                    ICipher.ciphermenu(); 
+                    ICipher.CipherMenu(); 
                     break;
                 case "3":
                     Hashing.HashingMenu();

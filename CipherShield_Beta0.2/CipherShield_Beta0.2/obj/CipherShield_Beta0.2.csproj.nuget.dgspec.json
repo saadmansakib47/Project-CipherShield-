@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\.Net Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj": {}
+    "I:\\Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj": {}
   },
   "projects": {
-    "C:\\.Net Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj": {
+    "I:\\Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\.Net Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj",
+        "projectUniqueName": "I:\\Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj",
         "projectName": "CipherShield_Beta0.2",
-        "projectPath": "C:\\.Net Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj",
+        "projectPath": "I:\\Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\CipherShield_Beta0.2.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\.Net Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\obj\\",
+        "outputPath": "I:\\Projects\\CipherShield_Beta0.2\\CipherShield_Beta0.2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

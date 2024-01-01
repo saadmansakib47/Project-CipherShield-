@@ -1,23 +1,25 @@
-﻿using CipherShield_Beta0._2;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CipherShield_Beta
 {
-    public interface ICipherText
+    public interface IBlockCipher
     {
-        static void CipherTextSubMenu()
+        public static void BlockCipherSubMenu()
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Text Encryption/Decryption");
-                Console.WriteLine("--------------------------\n\n");
+                Console.WriteLine("Polyalphabetic Substitution Cipher");
+                Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine(" Substitution Cipher");
+                Console.WriteLine(" AES (Advanced Encryption Standard) ");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
-                Console.WriteLine(" Transposition Cipher");
+                Console.WriteLine(" DES (Data Encryption Standard)");
                 ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
-                Console.WriteLine(" Block Cipher");
-                ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
@@ -25,17 +27,16 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
-                        ISubstitutionCipher.SubstitutionCipherSubMenu();
                         break;
                     case "2":
-                        ITranspositionCipher.TranspositionCipherSubMenu();
                         break;
                     case "3":
-                        IBlockCipher.BlockCipherSubMenu();
                         break;
                     case "4":
+                        break;
+                    case "5":
                         Console.Clear();
-                        return; // Return to the Cipher Menu.
+                        return; // Return to the Previous Menu.
                     default:
                         ColorConsole.WriteError("Invalid option. \nPress any key to continue.");
                         Console.ReadKey();
@@ -44,6 +45,6 @@ namespace CipherShield_Beta
                 }
             }
         }
-
     }
 }
+

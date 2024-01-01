@@ -2,11 +2,7 @@
 
 public static class ColorConsole
 {
-    /// <summary>
-    /// WriteLine with color
-    /// </summary>
-    /// <param name="text"></param>
-    /// <param name="color"></param>
+    
     public static void WriteLine(string text, ConsoleColor? color = null)
     {
         if (color.HasValue)
@@ -25,34 +21,7 @@ public static class ColorConsole
             Console.WriteLine(text);
     }
 
-    /// <summary>
-    /// Writes out a line with a specific color as a string
-    /// </summary>
-    /// <param name="text">Text to write</param>
-    /// <param name="color">A console color. Must match ConsoleColors collection names (case insensitive)</param>
-    public static void WriteLine(string text, string color)
-    {
-        if (string.IsNullOrEmpty(color))
-        {
-            WriteLine(text);
-            return;
-        }
-
-        if (!Enum.TryParse(color, true, out ConsoleColor col))
-        {
-            WriteLine(text);
-        }
-        else
-        {
-            WriteLine(text, col);
-        }
-    }
-
-    /// <summary>
-    /// Write with color
-    /// </summary>
-    /// <param name="text"></param>
-    /// <param name="color"></param>
+   
     public static void Write(string text, ConsoleColor? color = null)
     {
         if (color.HasValue)
@@ -71,11 +40,6 @@ public static class ColorConsole
             Console.Write(text);
     }
 
-    /// <summary>
-    /// Writes out a line with color specified as a string
-    /// </summary>
-    /// <param name="text">Text to write</param>
-    /// <param name="color">A console color. Must match ConsoleColors collection names (case insensitive)</param>
     public static void Write(string text, string color)
     {
         if (string.IsNullOrEmpty(color))
