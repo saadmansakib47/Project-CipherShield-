@@ -1,0 +1,14 @@
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\bin\Debug\net6.0\CipherShield_Beta0.2.exe
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\bin\Debug\net6.0\CipherShield_Beta0.2.deps.json
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\bin\Debug\net6.0\CipherShield_Beta0.2.runtimeconfig.json
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\bin\Debug\net6.0\CipherShield_Beta0.2.dll
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\bin\Debug\net6.0\CipherShield_Beta0.2.pdb
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.AssemblyInfoInputs.cache
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.AssemblyInfo.cs
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.csproj.CoreCompileInputs.cache
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.dll
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\refint\CipherShield_Beta0.2.dll
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.pdb
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\CipherShield_Beta0.2.genruntimeconfig.cache
+C:\.Net Projects\CipherShield_Beta0.2\CipherShield_Beta0.2\obj\Debug\net6.0\ref\CipherShield_Beta0.2.dll
