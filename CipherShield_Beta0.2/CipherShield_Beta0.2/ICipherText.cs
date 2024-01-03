@@ -1,5 +1,4 @@
 ﻿using CipherShield_Beta0._2;
-using System.Security.Cryptography;
 
 namespace CipherShield_Beta
 {
