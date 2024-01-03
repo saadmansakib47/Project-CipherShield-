@@ -36,9 +36,40 @@ namespace CipherShield_Beta
                         IBlockCipher.BlockCipherSubMenu();
                         break;
                     case "4":
-                        RSACrypt.RSASubmenu(); 
+                        Console.Clear();
+                        Console.WriteLine("Enter your text:");
+                        string message = Console.ReadLine();
+                        Console.WriteLine("\nOriginal Text: \"" + message + "\"\n");
+                        var rsa = new RSACrypt();
+                        var cypherText = rsa.Encrypt(message);
+                        
+                        Console.Write("Cypher Text: ");
+                        var isFirstLetter = true;
+                        
+                        foreach (var place in cypherText)
+                        {
+                            if (isFirstLetter)
+                            {
+                                isFirstLetter = false;
+                                Console.Write(place);
+                                continue;
+                            }
+                            Console.Write(", " + place);
+                        }
+                        Console.WriteLine();
+                        
+                        Console.WriteLine("\nPress Y/y to decrypt the cyphertext.");
+                        
+                        string a = Console.ReadLine();
+                        if (a == "y" || a == "Y")
+                        {
+                            var decryptedText = rsa.Decrypt(cypherText);
+                            Console.WriteLine("\nDecrypted Text: \"" + decryptedText + "\"");
+                        }
+                        
+                        Console.ReadLine();
+                        
                         break;
-
                     case "5":
                         Console.Clear();
                         return; // Return to the Cipher Menu.
