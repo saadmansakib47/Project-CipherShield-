@@ -24,7 +24,32 @@ namespace CipherShield_Beta
 
                 switch (choice)
                 {
-                    case "1":
+                    case "1":    
+
+                                            //for mono alphabetic
+                            try
+                            {
+                                Monoalphabetic monoalphabetic = new Monoalphabetic();
+                
+                                Console.WriteLine("Enter the plaintext to encrypt:");
+                                string plaintext4 = Console.ReadLine();
+                
+                                Console.WriteLine("Enter the shift value for encryption:");
+                                int shift = int.Parse(Console.ReadLine());
+                
+                                string encryptedText4 = monoalphabetic.Encrypt(plaintext4, shift);
+                                Console.WriteLine($"Encrypted Text: {encryptedText4}");
+                
+                                string decryptedText4 = monoalphabetic.Decrypt(encryptedText4, shift);
+                                Console.WriteLine($"Decrypted Text: {decryptedText4}");
+                            }
+                            catch ( Exception FormatException )
+                            {
+                                Console.WriteLine("please enter an 2 digit integer value for shift value ....");
+                            }
+                
+                            Console.ReadLine(); // To keep the console window open
+
                         break;
                     
                     case "2":
