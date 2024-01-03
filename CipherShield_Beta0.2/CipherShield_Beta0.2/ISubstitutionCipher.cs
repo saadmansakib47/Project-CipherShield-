@@ -18,10 +18,6 @@ namespace CipherShield_Beta
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
                 Console.WriteLine(" MonoAlphabetic");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
-                Console.WriteLine(" PolyAlphabetic");
-                ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
-                Console.WriteLine(" PolyGraphic");
-                ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
@@ -30,11 +26,8 @@ namespace CipherShield_Beta
                 {
                     case "1":
                         break;
+                    
                     case "2":
-                        break;
-                    case "3":
-                        break;
-                    case "4":
                         Console.Clear();
                         return; // Return to the Previous Menu.
                     default:
