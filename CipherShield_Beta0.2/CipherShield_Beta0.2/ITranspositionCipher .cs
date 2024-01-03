@@ -25,7 +25,7 @@ namespace CipherShield_Beta
                 ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
                 Console.WriteLine(" ");
                 */
-                ColorConsole.Write("[ 5 ]", ConsoleColor.Blue);
+                ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
@@ -66,13 +66,8 @@ namespace CipherShield_Beta
                             
                                                  
                         break;
+                   
                     case "2":
-                        break;
-                    case "3":
-                        break;
-                    case "4":
-                        break;
-                    case "5":
                         Console.Clear();
                         return; // Return to the Previous Menu.
                     default:
