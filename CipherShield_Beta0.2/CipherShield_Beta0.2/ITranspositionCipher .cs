@@ -17,14 +17,7 @@ namespace CipherShield_Beta
                 Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
                 Console.WriteLine("Reil Fence Cipher ");
-                /*
-                ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
-                Console.WriteLine(" ");
-                ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
-                Console.WriteLine(" ");
-                ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
-                Console.WriteLine(" ");
-                */
+               
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
