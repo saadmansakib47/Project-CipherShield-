@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace _1
 {
 
-    class Transposition
+    class RailFence
     {
         // function to encrypt a message
         public static string EncryptRailFence(string text, int key)
