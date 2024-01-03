@@ -1,14 +1,14 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 
 namespace CipherShield_Beta0._2
 {
     public class RSACrypt
     {
+        private int[] cypherText; 
+
         private const int MaxValue = 25000;
         private readonly bool[] isPrime = new bool[MaxValue + 1];
         private readonly List<int> primes = new List<int>();
@@ -20,20 +20,60 @@ namespace CipherShield_Beta0._2
         internal RSACrypt()
         {
             GeneratePrimes();
-            GenerateKey();
         }
 
-        public static void RunRSA() 
+        public static void RunRSA()
         {
+            RSACrypt rsa = new RSACrypt();
+            rsa.GenerateKey(); // Generate keys at the beginning
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("RSA Cryptography Menu:");
+                Console.WriteLine("-------------------------------\n\n");
+                ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
+                Console.WriteLine(" Encrypt Text ");
+                ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
+                Console.WriteLine(" Decrypt Text ");
+                ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
+                Console.WriteLine(" Back to Previous Menu");
+                Console.Write("\nSelect an option: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.Clear();
+                        rsa.EncryptOption();
+                        break;
+                    case "2":
+                        Console.Clear();
+                        rsa.DecryptWithProvidedKeysOption();
+                        break;
+                    case "3":
+                        Console.Clear();
+                        return;
+                    default:
+                        ColorConsole.WriteError("Invalid option. \nPress any key to continue.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
+        }
+
+        private void EncryptOption()
+        {
+            // Generate keys before encryption
+            GenerateKey();
+
             Console.WriteLine("Enter your text:");
             string message = Console.ReadLine();
-            Console.WriteLine("\nOriginal Text: \"" + message + "\"\n");
-
-            // Create an instance of RSACrypt
-            var rsa = new RSACrypt();
+            Console.WriteLine("\nOriginal Text: \"" + message + "\"");
 
             // Encrypt the message
-            var cypherText = rsa.Encrypt(message);
+            cypherText = Encrypt(message);
 
             Console.Write("Cypher Text: ");
             var isFirstLetter = true;
@@ -48,19 +88,39 @@ namespace CipherShield_Beta0._2
                 }
                 Console.Write(", " + place);
             }
+
             Console.WriteLine();
+            Console.WriteLine("Public Key (e, n): (" + e + ", " + n + ")");
+            Console.WriteLine("Private Key (d, n): (" + d + ", " + n + ")");
 
-            Console.WriteLine("\nPress Y/y to decrypt the cyphertext.");
-
-            string a = Console.ReadLine();
-            if (a == "y" || a == "Y")
-            {
-                // Decrypt and display the decrypted text
-                var decryptedText = rsa.Decrypt(cypherText);
-                Console.WriteLine("\nDecrypted Text: \"" + decryptedText + "\"");
-            }
-
+            Console.WriteLine("Press Any Key to Continue.");
             Console.ReadLine();
+            return ; // Go back to the main menu
+        }
+
+
+
+        private void DecryptWithProvidedKeysOption()
+        {
+            Console.WriteLine("Enter public key (e):");
+            int eKey = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter private key (d):");
+            int dKey = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter modulus (n):");
+            int nKey = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter ciphertext (comma-separated):");
+            int[] providedCypherText = Console.ReadLine().Split(',').Select(int.Parse).ToArray();
+
+            // Decrypt with provided keys
+            var decryptedTextWithProvidedKeys = DecryptWithKeys(eKey, dKey, nKey, providedCypherText);
+            Console.WriteLine("\nDecrypted Text with Provided Keys: \"" + decryptedTextWithProvidedKeys + "\"");
+
+            Console.WriteLine("Press Any Key to Continue."); 
+            Console.ReadLine();
+            return ; // Go back to the main menu
         }
 
         private void GeneratePrimes()
@@ -139,7 +199,25 @@ namespace CipherShield_Beta0._2
 
             for (var i = 0; i < array.Length; i++)
             {
+                // Ensure that the ciphertext value is less than n before decryption
+                if (cyphertext[i] >= n)
+                {
+                    throw new ArgumentException("Invalid ciphertext. Ensure ciphertext values are less than n.");
+                }
+
                 array[i] = (char)BigInteger.ModPow(cyphertext[i], d, n);
+            }
+            return new string(array);
+        }
+
+
+        internal string DecryptWithKeys(int e, int d, int n, int[] cypherText)
+        {
+            var array = new char[cypherText.Length];
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                array[i] = (char)BigInteger.ModPow(cypherText[i], d, n);
             }
             return new string(array);
         }

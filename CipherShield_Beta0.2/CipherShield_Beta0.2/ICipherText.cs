@@ -1,4 +1,4 @@
-using CipherShield_Beta0._2;
+﻿using CipherShield_Beta0._2;
 
 namespace CipherShield_Beta
 {

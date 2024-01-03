@@ -30,9 +30,6 @@ public class DES
     }
 
 
-
-
-    // Helper method for validating text input during encryption
     // Helper method for validating text input during encryption
     private string ValidateTextInput(int expectedLength)
     {
