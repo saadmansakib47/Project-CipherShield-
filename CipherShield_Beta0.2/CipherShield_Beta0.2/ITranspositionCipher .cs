@@ -41,13 +41,13 @@ namespace CipherShield_Beta
                                             int key = int.Parse(Console.ReadLine());
                             
                                             // Encrypt the message
-                                            string encryptedMessage = Transposition.EncryptRailFence(originalMessage, key);
+                                            string encryptedMessage = RailFence.EncryptRailFence(originalMessage, key);
                             
                                             Console.WriteLine($"Original Message: {originalMessage}");
                                             Console.WriteLine($"Encrypted Message: {encryptedMessage}");
                             
                                             // Decrypt the message
-                                            string decryptedMessage = Transposition.DecryptRailFence(encryptedMessage, key);
+                                            string decryptedMessage = RailFence.DecryptRailFence(encryptedMessage, key);
                             
                                             Console.WriteLine($"Decrypted Message: {decryptedMessage}");
                                         }
