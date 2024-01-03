@@ -8,10 +8,10 @@ public class DES
     public void EncryptText()
     {
         Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
-        string keyString = Console.ReadLine();
+        string keyString = ValidateHexStringInput();
 
         Console.Write("Enter the plaintext (8 characters): ");
-        string plaintext = Console.ReadLine();
+        string plaintext = ValidateTextInput();
 
         byte[] key = HexStringToByteArray(keyString);
         byte[] data = Encoding.ASCII.GetBytes(plaintext);
@@ -23,15 +23,16 @@ public class DES
 
         Console.WriteLine("\nPress any key to continue.");
         Console.ReadKey();
+        Console.Clear(); // Clear the console
     }
 
     public void DecryptText()
     {
         Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
-        string keyString = Console.ReadLine();
+        string keyString = ValidateHexStringInput();
 
         Console.Write("Enter the ciphertext (16 characters): ");
-        string ciphertext = Console.ReadLine();
+        string ciphertext = ValidateHexStringInput();
 
         byte[] key = HexStringToByteArray(keyString);
         byte[] data = HexStringToByteArray(ciphertext);
@@ -43,6 +44,68 @@ public class DES
 
         Console.WriteLine("\nPress any key to continue.");
         Console.ReadKey();
+        Console.Clear(); // Clear the console
+    }
+
+    // Helper method for validating hexadecimal input
+    private string ValidateHexStringInput()
+    {
+        string input;
+        do
+        {
+            Console.Write("Enter a 16 character hexadecimal string: ");
+            input = Console.ReadLine().ToUpper();
+
+            if (input.Length != 16 || !IsHexadecimal(input))
+            {
+                ColorConsole.WriteLine("Invalid input. Please enter a 16-character hexadecimal string.",ConsoleColor.Red);
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                break;
+            }
+        } while (true);
+        return input;
+    }
+
+    // Helper method for validating text input
+    private string ValidateTextInput()
+    {
+        string input;
+        do
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Enter plaintext (8 characters): ");
+            input = Console.ReadLine();
+
+            if (input.Length != 8)
+            {
+                ColorConsole.WriteLine("Invalid input. Please enter 8 characters.",ConsoleColor.Red);
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                break;
+            }
+        } while (true);
+        return input;
+    }
+
+    // Helper method to check if a string is a valid hexadecimal
+    private bool IsHexadecimal(string input)
+    {
+        foreach (char c in input)
+        {
+            if (!char.IsDigit(c) && !(c >= 'A' && c <= 'F'))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 

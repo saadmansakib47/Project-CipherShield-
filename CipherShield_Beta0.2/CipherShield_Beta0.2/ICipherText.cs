@@ -1,4 +1,5 @@
 ﻿using CipherShield_Beta0._2;
+using System.Security.Cryptography;
 
 namespace CipherShield_Beta
 {
@@ -18,6 +19,8 @@ namespace CipherShield_Beta
                 ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Block Cipher");
                 ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
+                Console.WriteLine(" RSA (Rivest - Shamir - Adleman) Algorithm");
+                ColorConsole.Write("[ 5 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
@@ -34,6 +37,10 @@ namespace CipherShield_Beta
                         IBlockCipher.BlockCipherSubMenu();
                         break;
                     case "4":
+                        RSACrypt.RSASubmenu(); 
+                        break;
+
+                    case "5":
                         Console.Clear();
                         return; // Return to the Cipher Menu.
                     default:

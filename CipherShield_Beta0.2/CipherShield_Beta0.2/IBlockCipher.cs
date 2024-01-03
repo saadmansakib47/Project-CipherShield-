@@ -63,9 +63,11 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         des.EncryptText();
                         break;
                     case "2":
+                        Console.Clear(); 
                         des.DecryptText();
                         break;
                     case "3":
