@@ -33,6 +33,38 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
+                                    //for transposition class
+
+                                        Console.WriteLine("Rail Fence Cipher Encryption and Decryption");
+                            
+                                        // Get user input for the message
+                                        Console.Write("Enter the message: ");
+                                        string originalMessage = Console.ReadLine();
+                            
+                                        // Get user input for the key
+                                        try
+                                        {
+                                            Console.Write("Enter the key: ");
+                                            int key = int.Parse(Console.ReadLine());
+                            
+                                            // Encrypt the message
+                                            string encryptedMessage = Transposition.EncryptRailFence(originalMessage, key);
+                            
+                                            Console.WriteLine($"Original Message: {originalMessage}");
+                                            Console.WriteLine($"Encrypted Message: {encryptedMessage}");
+                            
+                                            // Decrypt the message
+                                            string decryptedMessage = Transposition.DecryptRailFence(encryptedMessage, key);
+                            
+                                            Console.WriteLine($"Decrypted Message: {decryptedMessage}");
+                                        }
+                                        catch (Exception FormatException)
+                                        {
+                                            Console.WriteLine("please enter a 1 digit integer value for key ....");
+                                        }
+                                        Console.ReadLine(); // Pause to view the output
+                            
+                                                 
                         break;
                     case "2":
                         break;
