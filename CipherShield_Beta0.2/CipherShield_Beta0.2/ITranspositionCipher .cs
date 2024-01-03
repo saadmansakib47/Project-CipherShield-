@@ -26,7 +26,7 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
-                                    //for transposition class
+                                    //for RailFence class
 
                                         Console.WriteLine("Rail Fence Cipher Encryption and Decryption");
                             
