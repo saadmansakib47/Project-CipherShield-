@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1
+namespace CipherShield_Beta0._2
 {
 
     class RailFence
