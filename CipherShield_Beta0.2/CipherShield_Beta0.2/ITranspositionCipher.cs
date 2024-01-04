@@ -16,7 +16,7 @@ namespace CipherShield_Beta
                 Console.WriteLine("Choose Transposition Cipher");
                 Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine(" ");
+                Console.WriteLine("RailFence Cypher");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
                 Console.WriteLine(" ");
                 ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
