@@ -26,9 +26,10 @@ namespace CipherShield_Beta
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
 
-                switch (choice)
+               switch (choice)
                 {
                     case "1":
+                       Ceaser.CeaserSubMenu(); 
                         break;
                     case "2":
                         break;
