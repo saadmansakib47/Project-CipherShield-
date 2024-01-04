@@ -21,7 +21,6 @@ namespace CipherShield_Beta
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
 
-                DES des = new DES(); // Create an instance of the DES class
 
                 switch (choice)
                 {
@@ -30,6 +29,7 @@ namespace CipherShield_Beta
                         break;
                     case "2":
                         // Handle DES option
+                        DES des = new DES(); // Create an instance of the DES class
                         DESSubMenu(des); // Pass the DES instance to the DESSubMenu method
                         break;
                     case "3":
