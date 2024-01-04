@@ -41,7 +41,7 @@ namespace CipherShield_Beta0._2
                         Console.Clear();
                         Console.WriteLine("Enter ciphertext to decrypt:");
                         string ciphertext = Console.ReadLine();
-                        Console.WriteLine("Enter the key for decryption (number of rails):");
+                        Console.WriteLine("Enter the shift value for decryption:");
                         int keyDecrypt = int.Parse(Console.ReadLine());
                         string Text2 = Decrypt(ciphertext, keyDecrypt);
                         Console.WriteLine($"Decrypted Text: {Text2}");
