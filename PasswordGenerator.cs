@@ -7,7 +7,7 @@ namespace CipherShield_Beta
 {
     public class PasswordGenerator
     {
-        public static void GenerateCustomizedPassword()
+        public static void CustomizedPasswordSubMenu()
         {
             Console.Clear();
 
