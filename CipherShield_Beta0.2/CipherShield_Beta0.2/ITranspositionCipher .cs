@@ -1,4 +1,5 @@
-﻿using System;
+using CipherShield_Beta0._2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,14 @@ namespace CipherShield_Beta
                 Console.WriteLine("Choose Transposition Cipher");
                 Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine("Reil Fence Cipher ");
-               
+                Console.WriteLine("RailFence Cipher");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
+                Console.WriteLine(" ");
+                ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
+                Console.WriteLine(" ");
+                ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
+                Console.WriteLine(" ");
+                ColorConsole.Write("[ 5 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
@@ -26,41 +32,15 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
-                                    //for RailFence class
-
-                                        Console.WriteLine("Rail Fence Cipher Encryption and Decryption");
-                            
-                                        // Get user input for the message
-                                        Console.Write("Enter the message: ");
-                                        string originalMessage = Console.ReadLine();
-                            
-                                        // Get user input for the key
-                                        try
-                                        {
-                                            Console.Write("Enter the key: ");
-                                            int key = int.Parse(Console.ReadLine());
-                            
-                                            // Encrypt the message
-                                            string encryptedMessage = RailFence.EncryptRailFence(originalMessage, key);
-                            
-                                            Console.WriteLine($"Original Message: {originalMessage}");
-                                            Console.WriteLine($"Encrypted Message: {encryptedMessage}");
-                            
-                                            // Decrypt the message
-                                            string decryptedMessage = RailFence.DecryptRailFence(encryptedMessage, key);
-                            
-                                            Console.WriteLine($"Decrypted Message: {decryptedMessage}");
-                                        }
-                                        catch (Exception FormatException)
-                                        {
-                                            Console.WriteLine("please enter a 1 digit integer value for key ....");
-                                        }
-                                        Console.ReadLine(); // Pause to view the output
-                            
-                                                 
+                        RailFence.RailFenceSubMenu(); 
                         break;
-                   
                     case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
                         Console.Clear();
                         return; // Return to the Previous Menu.
                     default:
@@ -73,4 +53,3 @@ namespace CipherShield_Beta
         }
     }
 }
-
