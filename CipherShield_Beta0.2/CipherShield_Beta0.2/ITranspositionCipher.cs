@@ -31,6 +31,7 @@ namespace CipherShield_Beta
                 switch (choice)
                 {
                     case "1":
+                        RailFence.RailFenceSubMenu(); 
                         break;
                     case "2":
                         break;
