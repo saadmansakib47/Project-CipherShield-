@@ -1,4 +1,4 @@
-﻿using System;
+RailFence Class : using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +7,61 @@ using System.Threading.Tasks;
 namespace CipherShield_Beta0._2
 {
 
-    class RailFence
+    public class RailFence
     {
+
+        public static void RailFenceSubMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("RailFence Cipher");
+                Console.WriteLine("------------------\n\n");
+                ColorConsole.Write("[ 1 ]", ConsoleColor.Green);
+                Console.WriteLine("Encrypt");
+                ColorConsole.Write("[ 2 ]", ConsoleColor.Green);
+                Console.WriteLine("Decrypt");
+                ColorConsole.Write("[ 3 ]", ConsoleColor.Green);
+                Console.WriteLine("Back to Previous Menu");
+                Console.Write("\nSelect an option: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.Clear();
+                        Console.WriteLine("Enter plaintext to encrypt:");
+                        string plaintext = Console.ReadLine();
+                        Console.WriteLine("Enter the key for encryption (number of rails):");
+                        int keyEncrypt = int.Parse(Console.ReadLine());
+                        string encryptedText = EncryptRailFence(plaintext, keyEncrypt);
+                        Console.WriteLine($"Encrypted Text: {encryptedText}");
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine("Enter ciphertext to decrypt:");
+                        string ciphertext = Console.ReadLine();
+                        Console.WriteLine("Enter the key for decryption (number of rails):");
+                        int keyDecrypt = int.Parse(Console.ReadLine());
+                        string decryptedText = DecryptRailFence(ciphertext, keyDecrypt);
+                        Console.WriteLine($"Decrypted Text: {decryptedText}");
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    case "3":
+                        Console.Clear();
+                        return; // Return to the Previous Menu
+                    default:
+                        ColorConsole.WriteError("Invalid option. \nPress any key to continue.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
+        }
+
         // function to encrypt a message
         public static string EncryptRailFence(string text, int key)
         {
@@ -132,3 +185,4 @@ namespace CipherShield_Beta0._2
 
 }
 
+              
