@@ -11,22 +11,30 @@ namespace CipherShield_Beta
     {
         private static string ReadMaskedPassword()
         {
-            string password = "";
+            // Initialize variables
+        
+            string password = ""; // Store the entered password
             bool showPassword = false; // Flag to toggle password visibility
-            bool displayRangeInfo = false; // display scoring range information 
-            ConsoleKeyInfo key;
-
+            bool displayRangeInfo = false; // Display scoring range information
+            ConsoleKeyInfo key; // Represents the key that was pressed
+        
+            // Loop until Enter key is pressed
             do
             {
+                // Read a key without displaying it on the console
                 key = Console.ReadKey(intercept: true);
-
+        
+                // Check if Backspace key is pressed and there are characters in the password
                 if (key.Key == ConsoleKey.Backspace && password.Length > 0)
                 {
+                    // Remove the last character from the password and update console display
                     password = password.Substring(0, password.Length - 1);
                     Console.Write("\b \b");
                 }
+                // Check if a printable character (not a control character) is pressed
                 else if (!char.IsControl(key.KeyChar))
                 {
+                    // Append the pressed character to the password and display it on the console
                     password += key.KeyChar;
                     if (showPassword)
                     {
@@ -34,14 +42,21 @@ namespace CipherShield_Beta
                     }
                     else
                     {
+                        // Display a masked character instead of the actual character
                         ColorConsole.Write("*", ConsoleColor.DarkYellow);
                     }
                 }
+                // Check if Tab key is pressed
                 else if (key.Key == ConsoleKey.Tab)
                 {
-                    showPassword = !showPassword; // Toggle password visibility
+                    // Toggle password visibility
+                    showPassword = !showPassword;
+        
+                    // Clear the existing password display on the console
                     Console.SetCursorPosition(Console.CursorLeft - password.Length, Console.CursorTop);
                     Console.Write(new string(' ', password.Length));
+        
+                    // Reset the cursor position and display the password accordingly
                     Console.SetCursorPosition(Console.CursorLeft - password.Length, Console.CursorTop);
                     if (showPassword)
                     {
@@ -49,12 +64,16 @@ namespace CipherShield_Beta
                     }
                     else
                     {
+                        // Display masked password using '*' characters
                         ColorConsole.Write(new string('*', password.Length), ConsoleColor.DarkYellow);
                     }
                 }
             } while (key.Key != ConsoleKey.Enter);
-
+        
+            // Move to a new line after the password is entered
             Console.WriteLine();
+        
+            // Return the entered password
             return password;
         }
 
