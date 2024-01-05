@@ -17,8 +17,12 @@ namespace CipherShield_Beta
                 Console.WriteLine("Password Generator");
                 Console.WriteLine("------------------\n ");
                 Console.Write("Enter the desired password length: ");
+                
+                // Attempt to parse an integer from user input using the CustomTryParseInt method.
+                // If parsing is successful, the parsed value is stored in the 'length' variable.
                 if (CustomTryParseInt(Console.ReadLine(), out length))
-                {
+                {    
+                    //if method returns true
                     if (length <= 4)
                     {
                         ColorConsole.WriteError("Please enter a valid password length (4 < length < 30).");
@@ -26,12 +30,13 @@ namespace CipherShield_Beta
                         Console.Clear();
                     }
                     else
-                    {
+                    {     // If the password length is valid, exit the current logic.
                         break;
                     }
                 }
                 else
-                {
+                {   
+                    //if method returns false
                     ColorConsole.WriteError("Invalid input. Please enter a positive integer as the password length.");
                     Console.ReadKey();
                     Console.Clear();
