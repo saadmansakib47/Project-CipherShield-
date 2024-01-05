@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CipherShield_Beta
+namespace CipherShield
 {
     public interface ISubstitutionCipher
     {
@@ -26,12 +26,13 @@ namespace CipherShield_Beta
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
 
-               switch (choice)
+                switch (choice)
                 {
                     case "1":
-                       Ceaser.CeaserSubMenu(); 
+                        Ceaser.CeaserSubMenu();
                         break;
                     case "2":
+                        vignere.VignereSubMenu();
                         break;
                     case "3":
                         break;
