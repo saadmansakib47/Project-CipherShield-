@@ -30,7 +30,7 @@ namespace CipherShield_Beta
                         Console.Clear();
                     }
                     else
-                    {     // If the password length is valid, exit the current logic.
+                    {    // If the password length is valid, exit the current logic.
                         break;
                     }
                 }
@@ -43,20 +43,25 @@ namespace CipherShield_Beta
                 }
             }
 
+            
             ColorConsole.WriteInfo("\nUse y/n to interact.");
             bool includeUppercase = ReadYesNoInput("Include uppercase letters (y/n): ");
             bool includeLowercase = ReadYesNoInput("Include lowercase letters (y/n): ");
             bool includeNumbers = ReadYesNoInput("Include numbers (y/n): ");
             bool includeSymbols = ReadYesNoInput("Include symbols (y/n): ");
 
-            string excludedSymbols = string.Empty;
+            // Initialize an empty string to store excluded symbols.
+            string excludedSymbols = string.Empty;          
             if (ReadYesNoInput("Exclude specific character(s) (y/n): "))
             {
                 Console.Write("Enter the character(s) to exclude (for example, @$#): ");
                 excludedSymbols = Console.ReadLine();
             }
 
+            
+            // Initialize a char variable to store the required symbol, defaulting to '\0'.
             char requiredSymbol = '\0';
+            // If the user responds 'yes' (y), proceed to collect the required symbol.
             if (ReadYesNoInput("Require a specific symbol (y/n): "))
             {
                 requiredSymbol = ReadRequiredSymbol();
@@ -69,14 +74,23 @@ namespace CipherShield_Beta
         }
 
         private static bool ReadYesNoInput(string prompt)
-        {
+        {    
+            /*
+            *The method uses a while (true) loop, which means it will keep prompting the user 
+            *until a valid input is received or until the user terminates the program.
+            */
+            
             while (true)
-            {
+            {    
+                // Display the prompt to the user.
                 Console.Write(prompt);
+                // Read a single key from the console without displaying it.
                 ConsoleKeyInfo key = Console.ReadKey(intercept: true);
 
+                // Check if the pressed key is 'Y' or 'y' for Yes.
                 if (key.Key == ConsoleKey.Y)
-                {
+                {    
+                    // Display "Yes" in green and return true.
                     ColorConsole.WriteLine("Yes", ConsoleColor.Green);
                     return true;
                 }
@@ -85,21 +99,29 @@ namespace CipherShield_Beta
                     ColorConsole.WriteLine("No", ConsoleColor.Red);
                     return false;
                 }
-
+                
+                // If an invalid key is pressed, display an error message and continue the loop.
                 ColorConsole.WriteLine("\nInvalid input. Please enter 'y' for yes or 'n' for no.", ConsoleColor.Red);
             }
         }
 
+       // The method continues to prompt the user until a valid single-character input is received.
         private static char ReadRequiredSymbol()
         {
             char symbol;
+            // The method uses a while loop to keep prompting the user until a valid input is received.
             while (true)
             {
                 Console.Write("Enter the required symbol: ");
+                
+                // Try to parse the user's input into a single character
                 if (char.TryParse(Console.ReadLine(), out symbol))
-                {
+                {     
+                    // If successful, return the parsed symbol.
                     return symbol;
                 }
+
+                // If the input is not a single character, display an error message and continue the loop.
                 ColorConsole.WriteError("Invalid input. Please enter a single character.");
             }
         }
