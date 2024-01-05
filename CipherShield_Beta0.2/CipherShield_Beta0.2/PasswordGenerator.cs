@@ -154,19 +154,25 @@ namespace CipherShield_Beta
             return randomBytes;
         }
 
+        //it is a method like int.TryParse but customed to check if the input has character/input is a neg number
+        /*
+        *The out int result parameter means that the result variable will be used to store the parsed integer value, 
+        *and this value will be accessible outside the method after the method call.
+        *The method is expected to assign a value to result during its execution.
+        */
         public static bool CustomTryParseInt(string input, out int result)
         {
-            result = 0;
-            bool isNegative = false;
-            int currentIndex = 0;
-            int length = input.Length;
+            result = 0;                   // Initialize the result to 0.
+            bool isNegative = false;     // Flag to track if the number is negative.
+            int currentIndex = 0;        // Index for iterating through the input string.
+            int length = input.Length;   // Length of the input string.
 
             if (length == 0)
-                return false;
+                return false;           // If the input string is empty, parsing is not possible.
 
             if (input[currentIndex] == '-')
             {
-                isNegative = true;
+                isNegative = true;      // If the first character is '-', set the flag for negative.
                 currentIndex++;
             }
 
@@ -175,22 +181,22 @@ namespace CipherShield_Beta
                 char c = input[currentIndex];
                 if (c >= '0' && c <= '9')
                 {
-                    int digit = c - '0';
-                    result = result * 10 + digit;
+                    int digit = c - '0';               // Convert character to integer.
+                    result = result * 10 + digit;      // Build up the result by multiplying by 10 and adding the current digit.
                 }
                 else
                 {
-                    return false;
+                    return false;          // If a non-digit character is encountered, parsing fails.              
                 }
                 currentIndex++;
             }
 
             if (isNegative)
             {
-                result = -result;
+                result = -result;    // If the number is negative, negate the result.
             }
 
-            return true;
+            return true;       // Parsing successful.
         }
 
         private static string CustomToString(string value)
