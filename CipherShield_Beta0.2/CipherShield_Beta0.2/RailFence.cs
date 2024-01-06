@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,6 @@ namespace CipherShield_Beta0._2
 
     public class RailFence
     {
-
         public static void RailFenceSubMenu()
         {
             while (true)
@@ -147,7 +146,7 @@ namespace CipherShield_Beta0._2
                     row--;
             }
 
-            // now we can construct the fill the rail matrix
+            // now we can construct the fill using the rail matrix
             int index = 0;
             for (int i = 0; i < key; i++)
                 for (int j = 0; j < cipher.Length; j++)
@@ -185,4 +184,3 @@ namespace CipherShield_Beta0._2
 
 }
 
-              

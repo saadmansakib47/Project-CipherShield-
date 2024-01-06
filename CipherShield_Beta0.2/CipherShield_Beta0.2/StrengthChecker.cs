@@ -12,18 +12,18 @@ namespace CipherShield_Beta
         private static string ReadMaskedPassword()
         {
             // Initialize variables
-        
+
             string password = ""; // Store the entered password
             bool showPassword = false; // Flag to toggle password visibility
             bool displayRangeInfo = false; // Display scoring range information
             ConsoleKeyInfo key; // Represents the key that was pressed
-        
+
             // Loop until Enter key is pressed
             do
             {
                 // Read a key without displaying it on the console
                 key = Console.ReadKey(intercept: true);
-        
+
                 // Check if Backspace key is pressed and there are characters in the password
                 if (key.Key == ConsoleKey.Backspace && password.Length > 0)
                 {
@@ -51,11 +51,11 @@ namespace CipherShield_Beta
                 {
                     // Toggle password visibility
                     showPassword = !showPassword;
-        
+
                     // Clear the existing password display on the console
                     Console.SetCursorPosition(Console.CursorLeft - password.Length, Console.CursorTop);
                     Console.Write(new string(' ', password.Length));
-        
+
                     // Reset the cursor position and display the password accordingly
                     Console.SetCursorPosition(Console.CursorLeft - password.Length, Console.CursorTop);
                     if (showPassword)
@@ -69,10 +69,10 @@ namespace CipherShield_Beta
                     }
                 }
             } while (key.Key != ConsoleKey.Enter);
-        
+
             // Move to a new line after the password is entered
             Console.WriteLine();
-        
+
             // Return the entered password
             return password;
         }
@@ -286,4 +286,3 @@ namespace CipherShield_Beta
 
     }
 }
-

@@ -1,10 +1,50 @@
-﻿//DES assumes (little endian byte order) 
-using System.Text;
+﻿using System.Text;
 
 public class DES
 {
+    // Array to store the 16 subkeys used in DES encryption and decryption
     private static uint[] sub_key = new uint[16];
 
+    // Main entry point for the DES submenu
+    public static void DESSubMenu(DES des)
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("DES Submenu");
+            Console.WriteLine("-------------------------------\n\n");
+            ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
+            Console.WriteLine(" Encrypt Text ");
+            ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
+            Console.WriteLine(" Decrypt Text ");
+            ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
+            Console.WriteLine(" Back to Previous Menu");
+            Console.Write("\nSelect an option: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.Clear();
+                    des.EncryptText();
+                    break;
+                case "2":
+                    Console.Clear();
+                    des.DecryptText();
+                    break;
+                case "3":
+                    Console.Clear();
+                    return; // Return to the Block Cipher Submenu
+                default:
+                    ColorConsole.WriteError("Invalid option. \nPress any key to continue.");
+                    Console.ReadKey();
+                    Console.Clear();
+                    break;
+            }
+        }
+    }
+
+    // Method to handle encryption functionality
     public void EncryptText()
     {
         do
@@ -13,11 +53,13 @@ public class DES
             string keyString = ValidateHexStringInputForEncryption();
 
             Console.Write("Enter the plaintext (8 characters): ");
-            string plaintext = ValidateTextInput(8); // Validate for non-hex input and length
+            string plaintext = ValidateTextInput(8);
 
+            // Convert key and plaintext to byte arrays
             byte[] key = HexStringToByteArray(keyString);
             byte[] data = Encoding.ASCII.GetBytes(plaintext);
 
+            // Encrypt the data
             byte[] encryptedData = Encrypt(key, data);
 
             Console.WriteLine("\nEncrypted Text: ");
@@ -25,10 +67,10 @@ public class DES
 
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
-            Console.Clear(); // Clear the console
+            Console.Clear();
+            return;
         } while (true);
     }
-
 
     // Helper method for validating text input during encryption
     private string ValidateTextInput(int expectedLength)
@@ -36,7 +78,6 @@ public class DES
         string input;
         do
         {
-            Console.Write($"Enter the plaintext ({expectedLength} characters): ");
             input = Console.ReadLine();
 
             if (input.Length != expectedLength)
@@ -55,19 +96,20 @@ public class DES
         return input;
     }
 
-
-
+    // Method to handle decryption functionality
     public void DecryptText()
     {
         Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
-        string keyString = ValidateHexStringInputForEncryption(); 
+        string keyString = ValidateHexStringInputForEncryption();
 
         Console.Write("Enter the ciphertext (16 characters): ");
-        string ciphertext = ValidateHexStringInputForEncryption(); 
+        string ciphertext = ValidateHexStringInputForEncryption();
 
+        // Convert key and ciphertext to byte arrays
         byte[] key = HexStringToByteArray(keyString);
         byte[] data = HexStringToByteArray(ciphertext);
 
+        // Decrypt the data
         byte[] decryptedData = Decrypt(key, data);
 
         Console.WriteLine("\nDecrypted Text: ");
@@ -75,11 +117,9 @@ public class DES
 
         Console.WriteLine("\nPress any key to continue.");
         Console.ReadKey();
-        Console.Clear(); // Clear the console
+        Console.Clear();
     }
 
-
-    // Helper method to validate hexadecimal input during encryption
     // Helper method to validate hexadecimal input during encryption
     private string ValidateHexStringInputForEncryption()
     {
@@ -109,23 +149,24 @@ public class DES
         return input;
     }
 
-
-
-
-
     // Helper method to check if a string is a valid hexadecimal
+    // Check if the input string is a valid hexadecimal number
     private bool IsHexadecimal(string input)
     {
+        // Iterate through each character in the input string
         foreach (char c in input)
         {
+            // Check if the character is not a digit and not in the range of 'A' to 'F' (hexadecimal)
             if (!char.IsDigit(c) && !(c >= 'A' && c <= 'F'))
             {
+                // If any character is invalid, return false
                 return false;
             }
         }
+
+        // If all characters are valid hexadecimal, return true
         return true;
     }
-
 
 
     // Convert a hexadecimal string to a byte array
@@ -140,18 +181,24 @@ public class DES
         return byteArray;
     }
 
-
+    // Main encryption method
     public byte[] Encrypt(byte[] key, byte[] data)
     {
+        // Generate the 16 subkeys used in the encryption
         GenerateSubKeys(key);
+
+        // Perform the initial permutation on the data
         data = InitialPermutation(data);
 
+        // Split the data into left and right halves
         uint left = BitConverter.ToUInt32(data, 0);
         uint right = BitConverter.ToUInt32(data, 4);
 
+        // Perform the 16 rounds of the Feistel network
         for (int round = 0; round < 16; round++)
         {
             uint temp = FFunction(right, sub_key[round]);
+            //swapping left & right halves
             temp ^= left;
             left = right;
             right = temp;
@@ -164,14 +211,20 @@ public class DES
         return result;
     }
 
+    // Main decryption method
     public byte[] Decrypt(byte[] key, byte[] data)
     {
+        // Generate the 16 subkeys used in the decryption
         GenerateSubKeys(key);
+
+        // Perform the initial permutation on the data
         data = InitialPermutation(data);
 
+        // Split the data into left and right halves
         uint left = BitConverter.ToUInt32(data, 0);
         uint right = BitConverter.ToUInt32(data, 4);
 
+        // Perform the 16 rounds of the Feistel network in reverse order
         for (int round = 15; round >= 0; round--)
         {
             uint temp = FFunction(left, sub_key[round]);
@@ -187,6 +240,7 @@ public class DES
         return result;
     }
 
+    // Generate the 16 subkeys used in DES
     private void GenerateSubKeys(byte[] key)
     {
         // Ensure the key is 64 bits (8 bytes)
@@ -220,14 +274,15 @@ public class DES
         }
     }
 
-    // The number of bits to shift left for each round
+    // The number of bits to shift left for each round [ 1,2,9,16th round er jnno 1] 
     private static int[] ShiftBits = {
-    1, 1, 2, 2,
-    2, 2, 2, 2,
-    1, 2, 2, 2,
-    2, 2, 2, 1
+        1, 1, 2, 2,
+        2, 2, 2, 2,
+        1, 2, 2, 2,
+        2, 2, 2, 1
     };
 
+    // Perform Permutation Choice 1 (PC-1) on the key
     private uint PermuteChoice1(uint key)
     {
         // Define the bit positions for PC-1 permutation
@@ -239,15 +294,20 @@ public class DES
         63, 55, 47, 39, 31, 23, 15,
         7, 62, 54, 46, 38, 30, 22,
         14, 6, 61, 53, 45, 37, 29,
-        21, 13, 5, 28, 20, 12, 4 
-        };
+        21, 13, 5, 28, 20, 12, 4
+    };
 
         // Perform the permutation
         uint permutedKey = 0;
         for (int i = 0; i < pc1.Length; i++)
         {
+            // Calculate the original position in the key before permutation
             int position = pc1[i] - 1;
+
+            // Extract the bit value from the original key
             uint bitValue = (key >> position) & 1;
+
+            // Update the corresponding position in the permuted key
             permutedKey |= bitValue << i;
         }
 
@@ -255,6 +315,7 @@ public class DES
     }
 
 
+    // Perform Permutation Choice 2 (PC-2) on the key
     private uint PermuteChoice2(uint key)
     {
         // Define the bit positions for PC-2 permutation
@@ -265,14 +326,19 @@ public class DES
         41, 52, 31, 37, 47, 55, 30, 40,
         51, 45, 33, 48, 44, 49, 39, 56,
         34, 53, 46, 42, 50, 36, 29, 32
-        };
+    };
 
         // Perform the permutation
         uint permutedKey = 0;
         for (int i = 0; i < pc2.Length; i++)
         {
+            // Calculate the original position in the key before permutation
             int position = pc2[i] - 1;
+
+            // Extract the bit value from the original key
             uint bitValue = (key >> position) & 1;
+
+            // Update the corresponding position in the permuted key
             permutedKey |= bitValue << i;
         }
 
@@ -280,12 +346,15 @@ public class DES
     }
 
 
+    // Perform left circular shift on a 28-bit value
     private uint LeftShift(uint value, int shift)
     {
         // Perform left shift
         return (value << shift) | (value >> (28 - shift));
     }
 
+    // Perform the initial permutation (IP) on the data
+    // Perform the initial permutation (IP) on the data
     private byte[] InitialPermutation(byte[] data)
     {
         // Define the bit positions for the initial permutation (IP)
@@ -304,17 +373,26 @@ public class DES
         byte[] permutedData = new byte[8];
         for (int i = 0; i < initialPermutation.Length; i++)
         {
+            // Calculate the original position in the data before permutation
             int position = initialPermutation[i] - 1;
+
+            // Calculate the byte index and bit index based on the original position
             int byteIndex = position / 8;
             int bitIndex = position % 8;
 
+            // Extract the bit value from the original data
             byte bitValue = (byte)((data[byteIndex] >> (7 - bitIndex)) & 1);
+
+            // Update the corresponding position in the permuted data
             permutedData[i / 8] |= (byte)(bitValue << (7 - (i % 8)));
         }
 
         return permutedData;
     }
 
+
+    // Perform the final permutation (IP^(-1)) on the data
+    // Perform the final permutation (IP^(-1)) on the data
     private byte[] FinalPermutation(byte[] data)
     {
         // Define the bit positions for the final permutation (IP^(-1))
@@ -333,16 +411,23 @@ public class DES
         byte[] permutedData = new byte[8];
         for (int i = 0; i < finalPermutation.Length; i++)
         {
+            // Calculate the original position in the data before permutation
             int position = finalPermutation[i] - 1;
+
+            // Calculate the byte index and bit index based on the original position
             int byteIndex = position / 8;
             int bitIndex = position % 8;
 
+            // Extract the bit value from the original data
             byte bitValue = (byte)((data[byteIndex] >> (7 - bitIndex)) & 1);
+
+            // Update the corresponding position in the permuted data
             permutedData[i / 8] |= (byte)(bitValue << (7 - (i % 8)));
         }
 
         return permutedData;
     }
+
 
 
     private uint FFunction(uint data, uint key)
@@ -362,6 +447,7 @@ public class DES
         return permutedData;
     }
 
+    // Perform expansion permutation on a 32-bit data input
     private uint ExpansionPermutation(uint data)
     {
         // Define the bit positions for the expansion permutation
@@ -374,17 +460,26 @@ public class DES
         28, 29, 28, 29, 30, 31, 32, 1
     };
 
-        // Perform the expansion permutation
+        // Initialize a variable to store the expanded data
         uint expandedData = 0;
+
+        // Iterate through each position in the expansion permutation
         for (int i = 0; i < expansionPermutation.Length; i++)
         {
+            // Get the position for the current iteration
             int position = expansionPermutation[i] - 1;
+
+            // Extract the bit value from the original data at the specified position
             uint bitValue = (data >> (32 - position)) & 1;
+
+            // Set the bit in the expanded data at the current iteration position
             expandedData |= bitValue << i;
         }
 
+        // Return the result of the expansion permutation
         return expandedData;
     }
+
 
     private uint Substitution(uint data)
     {
@@ -433,26 +528,36 @@ public class DES
     }
 
 
+    // Perform permutation (P-box) on a 32-bit data input
     private uint Permutation(uint data)
     {
         // Define the bit positions for the permutation (P-box)
         int[] permutation = {
-        16, 7, 20, 21, 29, 12, 28, 17, 
+        16, 7, 20, 21, 29, 12, 28, 17,
         1, 15, 23, 26, 5, 18, 31, 10,
         2, 8, 24, 14, 32, 27, 3, 9,
         19, 13, 30, 6, 22, 11, 4, 25
     };
 
-        // Perform the permutation (P-box)
+        // Initialize a variable to store the permuted data
         uint permutedData = 0;
+
+        // Iterate through each position in the permutation (P-box)
         for (int i = 0; i < permutation.Length; i++)
         {
+            // Get the position for the current iteration
             int position = permutation[i] - 1;
+
+            // Extract the bit value from the original data at the specified position
             uint bitValue = (data >> position) & 1;
+
+            // Set the bit in the permuted data at the current iteration position
             permutedData |= bitValue << i;
         }
 
+        // Return the result of the permutation (P-box)
         return permutedData;
     }
+
 
 }

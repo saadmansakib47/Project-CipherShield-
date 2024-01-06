@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CipherShield_Beta0._2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace CipherShield_Beta
                 Console.WriteLine("Choose Transposition Cipher");
                 Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine("RailFence Cypher");
+                Console.WriteLine("RailFence Cipher");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
                 Console.WriteLine(" ");
                 ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
@@ -26,7 +27,7 @@ namespace CipherShield_Beta
                 ColorConsole.Write("[ 5 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine(); // Handles user input. 
 
                 switch (choice)
                 {

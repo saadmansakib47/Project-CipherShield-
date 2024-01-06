@@ -1,43 +1,34 @@
-﻿using CipherShield_Beta0._2;
+﻿using CipherShield;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CipherShield_Beta
+namespace CipherShield_Beta0._2
 {
-    public interface ISubstitutionCipher
+    public interface IPolyAlphabetic
     {
-        public static void SubstitutionCipherSubMenu()
+        public static void PolyAlphabeticCipherSubMenu()
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Choose Substitution Cipher Type");
+                Console.WriteLine("Choose Polyalphabetic Substitution Cipher");
                 Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine(" MonoAlphabetic");
+                Console.WriteLine("Vignere Cipher");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
-                Console.WriteLine(" PolyAlphabetic");
-                ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
-                Console.WriteLine(" PolyGraphic");
-                ColorConsole.Write("[ 4 ]", ConsoleColor.Blue);
-                Console.WriteLine(" Back to Previous Menu");
+                Console.WriteLine("Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine(); //Handles user input. 
 
                 switch (choice)
                 {
                     case "1":
-                        IMonoAlphabetic.MonoAlphabeticCipherSubMenu(); 
+                        Vignere.VignereSubMenu(); 
                         break;
                     case "2":
-                        IPolyAlphabetic.PolyAlphabeticCipherSubMenu();
-                        break;
-                    case "3":
-                        break;
-                    case "4":
                         Console.Clear();
                         return; // Return to the Previous Menu.
                     default:

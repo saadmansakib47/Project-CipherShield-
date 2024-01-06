@@ -1,17 +1,19 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
+// Static class for colored console output
 public static class ColorConsole
 {
     /// <summary>
     /// WriteLine with color
     /// </summary>
-    /// <param name="text"></param>
-    /// <param name="color"></param>
+    /// <param name="text">Text to write</param>
+    /// <param name="color">Color of the text (optional)</param>
     public static void WriteLine(string text, ConsoleColor? color = null)
     {
         if (color.HasValue)
         {
-            var oldColor = System.Console.ForegroundColor;
+            var oldColor = Console.ForegroundColor;
             if (color == oldColor)
                 Console.WriteLine(text);
             else
@@ -51,13 +53,13 @@ public static class ColorConsole
     /// <summary>
     /// Write with color
     /// </summary>
-    /// <param name="text"></param>
-    /// <param name="color"></param>
+    /// <param name="text">Text to write</param>
+    /// <param name="color">Color of the text (optional)</param>
     public static void Write(string text, ConsoleColor? color = null)
     {
         if (color.HasValue)
         {
-            var oldColor = System.Console.ForegroundColor;
+            var oldColor = Console.ForegroundColor;
             if (color == oldColor)
                 Console.Write(text);
             else
@@ -96,16 +98,15 @@ public static class ColorConsole
 
     #region Wrappers and Templates
 
-
     /// <summary>
-    /// Writes a line of header text wrapped in a in a pair of lines of dashes:
+    /// Writes a line of header text wrapped in a pair of lines of dashes:
     /// -----------
     /// Header Text
     /// -----------
     /// and allows you to specify a color for the header. The dashes are colored
     /// </summary>
     /// <param name="headerText">Header text to display</param>
-    /// <param name="wrapperChar">wrapper character (-)</param>
+    /// <param name="wrapperChar">Wrapper character (-)</param>
     /// <param name="headerColor">Color for header text (yellow)</param>
     /// <param name="dashColor">Color for dashes (gray)</param>
     public static void WriteWrappedHeader(string headerText,
@@ -123,6 +124,7 @@ public static class ColorConsole
         WriteLine(line, dashColor);
     }
 
+    // Lazy instantiation of Regex for color block extraction
     private static Lazy<Regex> colorBlockRegEx = new Lazy<Regex>(
         () => new Regex("\\[(?<color>.*?)\\](?<text>[^[]*)\\[/\\k<color>\\]", RegexOptions.IgnoreCase),
         isThreadSafe: true);
@@ -191,7 +193,7 @@ public static class ColorConsole
     }
 
     /// <summary>
-    /// Write a Error Line - Red
+    /// Write an Error Line - Red
     /// </summary>
     /// <param name="text">Text to write out</param>
     public static void WriteError(string text)
@@ -202,15 +204,14 @@ public static class ColorConsole
     /// <summary>
     /// Write a Warning Line - Yellow
     /// </summary>
-    /// <param name="text">Text to Write out</param>
+    /// <param name="text">Text to write out</param>
     public static void WriteWarning(string text)
     {
         WriteLine(text, ConsoleColor.DarkYellow);
     }
 
-
     /// <summary>
-    /// Write a Info Line - dark cyan
+    /// Write an Info Line - dark cyan
     /// </summary>
     /// <param name="text">Text to write out</param>
     public static void WriteInfo(string text)
@@ -220,4 +221,3 @@ public static class ColorConsole
 
     #endregion
 }
-

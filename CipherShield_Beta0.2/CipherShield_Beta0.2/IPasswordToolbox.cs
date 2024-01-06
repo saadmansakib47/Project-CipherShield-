@@ -16,7 +16,7 @@ namespace CipherShield_Beta
             {
                 Console.Clear();
                 Console.WriteLine("Password Toolbox");
-                Console.WriteLine("");
+                Console.WriteLine("--------------------------\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Password Creator");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
@@ -25,13 +25,13 @@ namespace CipherShield_Beta
                 Console.WriteLine(" Back to Main Menu");
                 Console.WriteLine("");
                 ColorConsole.Write("Select an option: ", ConsoleColor.White);
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine(); // Handles user input. 
 
 
                 switch (choice)
                 {
                     case "1":
-                        PasswordGenerator.CustomizedPasswordSubMenu();
+                        PasswordGenerator.CustomizedPasswordSubMenu(); 
                         break;
                     case "2":
                         StrengthChecker.PasswordStrengthReport();

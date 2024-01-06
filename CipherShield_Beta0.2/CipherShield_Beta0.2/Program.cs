@@ -47,17 +47,16 @@ class Program
                     IPasswordToolbox.PasswordToolbox();
                     break;
                 case "2":
-                    ICipher.CipherMenu(); 
+                    ICipherText.CipherTextSubMenu(); 
                     break;
                 case "3":
-                    Hashing.HashingMenu();
+                    IHash.HashingMenu();
                     break;
                 case "4":
                     LogFileParser.ParseLogFiles();
                     break;
                 case "5":
-                    Environment.Exit(0);
-                    break;
+                    return; 
                 default:
                     ColorConsole.WriteLine("Invalid option. Press any key to continue.", ConsoleColor.Red);
                     Console.ReadKey();
@@ -66,7 +65,5 @@ class Program
             }
         }
     }
-
-
 }
 

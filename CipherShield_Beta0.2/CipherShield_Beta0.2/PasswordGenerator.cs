@@ -17,11 +17,11 @@ namespace CipherShield_Beta
                 Console.WriteLine("Password Generator");
                 Console.WriteLine("------------------\n ");
                 Console.Write("Enter the desired password length: ");
-                
+
                 // Attempt to parse an integer from user input using the CustomTryParseInt method.
                 // If parsing is successful, the parsed value is stored in the 'length' variable.
                 if (CustomTryParseInt(Console.ReadLine(), out length))
-                {    
+                {
                     //if method returns true
                     if (length <= 4)
                     {
@@ -35,7 +35,7 @@ namespace CipherShield_Beta
                     }
                 }
                 else
-                {   
+                {
                     //if method returns false
                     ColorConsole.WriteError("Invalid input. Please enter a positive integer as the password length.");
                     Console.ReadKey();
@@ -43,7 +43,7 @@ namespace CipherShield_Beta
                 }
             }
 
-            
+
             ColorConsole.WriteInfo("\nUse y/n to interact.");
             bool includeUppercase = ReadYesNoInput("Include uppercase letters (y/n): ");
             bool includeLowercase = ReadYesNoInput("Include lowercase letters (y/n): ");
@@ -51,14 +51,14 @@ namespace CipherShield_Beta
             bool includeSymbols = ReadYesNoInput("Include symbols (y/n): ");
 
             // Initialize an empty string to store excluded symbols.
-            string excludedSymbols = string.Empty;          
+            string excludedSymbols = string.Empty;
             if (ReadYesNoInput("Exclude specific character(s) (y/n): "))
             {
                 Console.Write("Enter the character(s) to exclude (for example, @$#): ");
                 excludedSymbols = Console.ReadLine();
             }
 
-            
+
             // Initialize a char variable to store the required symbol, defaulting to '\0'.
             char requiredSymbol = '\0';
             // If the user responds 'yes' (y), proceed to collect the required symbol.
@@ -74,14 +74,14 @@ namespace CipherShield_Beta
         }
 
         private static bool ReadYesNoInput(string prompt)
-        {    
+        {
             /*
             *The method uses a while (true) loop, which means it will keep prompting the user 
             *until a valid input is received or until the user terminates the program.
             */
-            
+
             while (true)
-            {    
+            {
                 // Display the prompt to the user.
                 Console.Write(prompt);
                 // Read a single key from the console without displaying it.
@@ -89,7 +89,7 @@ namespace CipherShield_Beta
 
                 // Check if the pressed key is 'Y' or 'y' for Yes.
                 if (key.Key == ConsoleKey.Y)
-                {    
+                {
                     // Display "Yes" in green and return true.
                     ColorConsole.WriteLine("Yes", ConsoleColor.Green);
                     return true;
@@ -99,13 +99,13 @@ namespace CipherShield_Beta
                     ColorConsole.WriteLine("No", ConsoleColor.Red);
                     return false;
                 }
-                
+
                 // If an invalid key is pressed, display an error message and continue the loop.
                 ColorConsole.WriteLine("\nInvalid input. Please enter 'y' for yes or 'n' for no.", ConsoleColor.Red);
             }
         }
 
-       // The method continues to prompt the user until a valid single-character input is received.
+        // The method continues to prompt the user until a valid single-character input is received.
         private static char ReadRequiredSymbol()
         {
             char symbol;
@@ -113,10 +113,10 @@ namespace CipherShield_Beta
             while (true)
             {
                 Console.Write("Enter the required symbol: ");
-                
+
                 // Try to parse the user's input into a single character
                 if (char.TryParse(Console.ReadLine(), out symbol))
-                {     
+                {
                     // If successful, return the parsed symbol.
                     return symbol;
                 }
