@@ -16,22 +16,18 @@ namespace CipherShield
                 Console.WriteLine("1. MD5");
                 Console.WriteLine("2. SHA-256");
                 Console.WriteLine("3. Back to Main Menu");
-                Console.Write("Select a hashing algorithm: ");
+                Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
-
+            
                 switch (choice)
                 {
                     case "1":
                         
                         break;
                     case "2":
-                        // Create an instance of the SHA256 class
-                        SHA256 sha256 = new SHA256();
-                        sha256.RunSHA();
-
-                        Console.ReadLine();
+                        SHA256.RunSHA();
                         break;
-
+            
                     // Add cases for other hash algorithms here.
                     case "3":
                         Console.Clear();
