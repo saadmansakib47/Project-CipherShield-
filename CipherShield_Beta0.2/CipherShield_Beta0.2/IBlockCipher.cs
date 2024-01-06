@@ -13,10 +13,8 @@ namespace CipherShield_Beta
                 Console.WriteLine("Block Cipher Submenu");
                 Console.WriteLine("-------------------------------\n\n");
                 ColorConsole.Write("[ 1 ]", ConsoleColor.Blue);
-                Console.WriteLine(" AES (Advanced Encryption Standard) ");
+                Console.WriteLine(" DES (Data Encryption Standard) ");
                 ColorConsole.Write("[ 2 ]", ConsoleColor.Blue);
-                Console.WriteLine(" DES (Data Encryption Standard)");
-                ColorConsole.Write("[ 3 ]", ConsoleColor.Blue);
                 Console.WriteLine(" Back to Previous Menu");
                 Console.Write("\nSelect an option: ");
                 string choice = Console.ReadLine();
@@ -27,12 +25,9 @@ namespace CipherShield_Beta
                 {
                     case "1":
                         // Handle AES option 
+                        DES.DESSubMenu(des);
                         break;
                     case "2":
-                        // Handle DES option
-                        DES.DESSubMenu(des) ; // Pass the DES instance to the DESSubMenu method
-                        break;
-                    case "3":
                         Console.Clear();
                         return; // Return to the Previous Menu.
                     default:

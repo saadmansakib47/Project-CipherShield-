@@ -127,17 +127,14 @@ namespace CipherShield_Beta
         }
 
         private static string GenerateRandomPassword(int length, bool includeUppercase, bool includeLowercase, bool includeNumbers, bool includeSymbols, string excludedSymbols, char requiredSymbol)
-        {    
-            // Define character sets for uppercase letters, lowercase letters, numbers, and symbols
+        {
             string uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
             string numberChars = "0123456789";
             string symbolChars = "!@#$%^&*()_+";
 
-            // Initialize an empty string to store all allowed characters based on user preferences
             string allChars = "";
 
-            // Add characters to the allowed set based on user preferences,first e shob add dibo
             if (includeUppercase)
                 allChars += uppercaseChars;
             if (includeLowercase)
@@ -147,37 +144,29 @@ namespace CipherShield_Beta
             if (includeSymbols)
                 allChars += symbolChars;
 
-            // Exclude specified symbols from the allowed set
             allChars = CustomReplaceSymbols(allChars, excludedSymbols);
 
-            // Check if a required symbol is specified and not present in the allowed set
             if (requiredSymbol != '\0' && !CustomContainsSymbol(allChars, requiredSymbol))
-            {    
-                
-                 // Print an error message and return an empty string if the required symbol is not allowed
+            {
                 ColorConsole.WriteError($"Required symbol '{requiredSymbol}' is not in the list of allowed symbols.");
                 return "";
             }
 
-             // Generate an array of random bytes to be used as indices for selecting characters from the allowed set
             byte[] randomBytes = CustomNextBytes(length);
-             // Initialize a StringBuilder to construct the final password
             StringBuilder password = new StringBuilder(length);
 
-             // Iterate through the desired password length and select random characters from the allowed set
             for (int i = 0; i < length; i++)
             {
                 int index = randomBytes[i] % allChars.Length;
                 password.Append(allChars[index]);
             }
 
-            // If a required symbol is specified, replace a randomly chosen character with the required symbol
             if (requiredSymbol != '\0')
             {
                 int position = randomBytes[randomBytes.Length - 1] % length;
                 password[position] = requiredSymbol;
             }
-             // Return the generated password as a string
+
             return password.ToString();
         }
 
@@ -237,18 +226,14 @@ namespace CipherShield_Beta
             return true;       // Parsing successful.
         }
 
-        // A placeholder method that returns the input string as is.
         private static string CustomToString(string value)
         {
             return value;
         }
 
-         // Replaces symbols specified in the 'symbolsToExclude' string with spaces in the 'source' string.
         private static string CustomReplaceSymbols(string source, string symbolsToExclude)
         {
             StringBuilder result = new StringBuilder(source);
-
-             // Iterate through each symbol in 'symbolsToExclude' and replace it with a space in 'result'
             foreach (char symbol in symbolsToExclude)
             {
                 result = new StringBuilder(CustomReplaceSymbol(result.ToString(), symbol, ' '));
@@ -256,45 +241,32 @@ namespace CipherShield_Beta
             return result.ToString();
         }
 
-       // Replaces occurrences of a specified character with another character in the given string.
         private static string CustomReplaceSymbol(string source, char oldChar, char newChar)
         {
             StringBuilder result = new StringBuilder();
-
-            // Iterate through each character in the source string
             foreach (char c in source)
-            {    
-                // Check if the character is equal to the character to be replaced
+            {
                 if (c == oldChar)
-                {    
-                    // If equal, append the replacement character to the result
+                {
                     result.Append(newChar);
                 }
                 else
-                {    
-                    // If not equal, append the original character to the result
+                {
                     result.Append(c);
                 }
             }
-            // Convert the StringBuilder to a string and return the result
             return result.ToString();
         }
 
-
-        // Checks if the specified character is present in the given string.
         private static bool CustomContainsSymbol(string source, char value)
         {
             foreach (char c in source)
-            {    
-                // Check if the current character is equal to the specified character
+            {
                 if (c == value)
-                {    
-                    // If equal, return true indicating the character is found
+                {
                     return true;
                 }
             }
-
-            // If the loop completes without finding the character, return false
             return false;
         }
     }
