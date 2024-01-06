@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CipherShield
 {
-    public static class vignere
+    public static class Vignere
     {
 
         public static void VignereSubMenu()
