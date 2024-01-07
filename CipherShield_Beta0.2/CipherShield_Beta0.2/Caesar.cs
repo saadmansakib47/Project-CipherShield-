@@ -241,6 +241,7 @@ public class Caesar
     }
 }
 
+/* the extra alphabet class
 // Class representing the English alphabet
 public class Alphabet
 {
@@ -252,5 +253,11 @@ public class Alphabet
     {
         // Assuming a standard English alphabet
         lang = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+    }
+*/
+
+ class Alphabet
+    {
+        public char[] lang = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#$%^&*()+=-_'?.,|/`~№:;@[]{}\\".ToCharArray();
     }
 }
