@@ -182,14 +182,23 @@ namespace CipherShield_Beta
             return password.ToString();
         }
 
+        // Generates an array of random bytes.
         private static byte[] CustomNextBytes(int length)
-        {
+        {    
+            // Create an array to store the generated random bytes
             byte[] randomBytes = new byte[length];
+            // Create a new instance of the Random class
             Random random = new Random();
+
+             // Iterate through each index in the array to fill it with a random byte
             for (int i = 0; i < length; i++)
-            {
+            {    
+                // Generate a random integer between 0 (inclusive) and 256 (exclusive)
+                // Convert the random integer to a byte and assign it to the current index in the array
                 randomBytes[i] = (byte)random.Next(256);
             }
+
+            // Return the array of random bytes
             return randomBytes;
         }
 
@@ -238,6 +247,8 @@ namespace CipherShield_Beta
             return true;       // Parsing successful.
         }
 
+        
+        // A placeholder method that returns the input string as is.
         private static string CustomToString(string value)
         {
             return value;
