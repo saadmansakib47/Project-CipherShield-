@@ -12,7 +12,11 @@ namespace CipherShield_Beta0.2
         {
             // Clear the Previous Screen 
             Console.Clear();
-
+            
+            // Display header for SHA-256
+            Console.WriteLine("SHA-256");
+            Console.WriteLine("-----------\n");
+            
             // Get input from the user
             Console.Write("Enter a message: ");
             string message = Console.ReadLine();
