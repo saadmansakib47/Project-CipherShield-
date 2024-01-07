@@ -199,7 +199,7 @@ namespace CipherShield_Beta0.2
             string H6 = initHash[6].ToString("X8");
             string H7 = initHash[7].ToString("X8");
 
-            // Concatenation the hexadecimal strings
+            // Concatenate the hexadecimal strings
             return H0 + H1 + H2 + H3 + H4 + H5 + H6 + H7;
         }
 
