@@ -134,7 +134,7 @@ namespace CipherShield_Beta0.2
                 {
                     byte[] x = SubArray(chunks[k], m * 4, 4);
 
-                    //// Reverse the byte order (little-endian to big-endian)
+                    // Reverse the byte order (little-endian to big-endian)
                     Array.Reverse(x);
 
                     // convert to UInt and store it in the message schedule
