@@ -150,7 +150,7 @@ namespace CipherShield_Beta0._2
             int index = 0;
             for (int i = 0; i < key; i++)
                 for (int j = 0; j < cipher.Length; j++)
-                    if (rail[i, j] == '*' && index < cipher.Length)
+                    if (rail[i, j] == '*' && index < cipher.Length)         //row wise marked * place e cipher text boashabo
                         rail[i, j] = cipher[index++];
 
             // create the result string
@@ -161,7 +161,7 @@ namespace CipherShield_Beta0._2
             // iterate through the rail matrix
             // now read the matrix in zig-zag manner to construct
             // the resultant text
-            for (int i = 0; i < cipher.Length; i++)
+            for (int i = 0; i < cipher.Length; i++)               //similar zigzag manner e matrix traverse korlei original text pabo
             {
                 // check the direction of flow
                 if (row == 0)
