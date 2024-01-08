@@ -31,7 +31,7 @@ namespace CipherShield_Beta0._2
                         Console.Clear();
                         Console.WriteLine("Enter plaintext to encrypt:");
                         string plaintext = Console.ReadLine();
-                        Console.WriteLine("Enter the key for encryption (number of rails):");
+                        Console.WriteLine("Enter the key for encryption (number of rails (an integer) :");
                         int keyEncrypt = int.Parse(Console.ReadLine());
                         string encryptedText = EncryptRailFence(plaintext, keyEncrypt);
                         Console.WriteLine($"Encrypted Text: {encryptedText}");
@@ -42,7 +42,7 @@ namespace CipherShield_Beta0._2
                         Console.Clear();
                         Console.WriteLine("Enter ciphertext to decrypt:");
                         string ciphertext = Console.ReadLine();
-                        Console.WriteLine("Enter the key for decryption (number of rails):");
+                        Console.WriteLine("Enter the key for decryption (number of rails (an integer) :");
                         int keyDecrypt = int.Parse(Console.ReadLine());
                         string decryptedText = DecryptRailFence(ciphertext, keyDecrypt);
                         Console.WriteLine($"Decrypted Text: {decryptedText}");
