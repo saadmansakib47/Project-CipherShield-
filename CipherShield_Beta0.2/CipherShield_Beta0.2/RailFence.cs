@@ -84,13 +84,13 @@ namespace CipherShield_Beta0._2
                 // reverse the direction if we've just
                 // filled the top or bottom rail
                 if (row == 0 || row == key - 1)
-                    dirDown = !dirDown;
+                    dirDown = !dirDown;              //direction change korar condition,row 0 down e jabe ,row n-1 up e jabe
 
                 // fill the corresponding alphabet
-                rail[row, col++] = text[i];
+                rail[row, col++] = text[i];          //column 1 kore barbe always
 
                 // find the next row using direction flag
-                if (dirDown)
+                if (dirDown)                         //dirdown true hole row barbe,false hole row komabo
                     row++;
                 else
                     row--;
