@@ -31,7 +31,7 @@ namespace CipherShield
                         Console.Clear();
                         Console.WriteLine("Enter plaintext to encrypt:");
                         string plaintext2 = Console.ReadLine();
-                        Console.WriteLine("Enter the key for encryption :");
+                        Console.WriteLine("Enter the key for encryption (letters) :");
                         string key1 = Console.ReadLine();
                         string Text3 = Encipher(plaintext2,key1);
                         Console.WriteLine($"Encrypted Text: {Text3}");
@@ -42,7 +42,7 @@ namespace CipherShield
                         Console.Clear();
                         Console.WriteLine("Enter ciphertext to decrypt:");
                         string ciphertext1 = Console.ReadLine();
-                        Console.WriteLine("Enter the key for decryption :");
+                        Console.WriteLine("Enter the key for decryption (letters) :");
                         string keyDecrypt1 = Console.ReadLine();
                         string Text4= Decipher(ciphertext1, keyDecrypt1);
                         Console.WriteLine($"Decrypted Text: {Text4}");
