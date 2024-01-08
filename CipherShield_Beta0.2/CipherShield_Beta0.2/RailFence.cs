@@ -159,6 +159,8 @@ namespace CipherShield_Beta0._2
             col = 0;
 
             // iterate through the rail matrix
+            // now read the matrix in zig-zag manner to construct
+            // the resultant text
             for (int i = 0; i < cipher.Length; i++)
             {
                 // check the direction of flow
