@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -220,7 +220,7 @@ public class Caesar
         var sortedFrequencies = letterFrequency.OrderByDescending(pair => pair.Value);
 
         // Probable letters in English (a, r, i, o, t, n, s, l)
-        char[] probableLetters = { 'A', 'R', 'I', 'O', 'T', 'N', 'S', 'L' };
+        char[] probableLetters = { 'E', 'A', 'R', 'I', 'O', 'T', 'N', 'S', 'L' };
 
         // Try to decrypt using each probable letter
         foreach (char probableLetter in probableLetters)
@@ -241,7 +241,6 @@ public class Caesar
     }
 }
 
-/* the extra alphabet class
 // Class representing the English alphabet
 public class Alphabet
 {
@@ -253,11 +252,5 @@ public class Alphabet
     {
         // Assuming a standard English alphabet
         lang = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-    }
-*/
-
- class Alphabet
-    {
-        public char[] lang = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#$%^&*()+=-_'?.,|/`~№:;@[]{}\\".ToCharArray();
     }
 }
