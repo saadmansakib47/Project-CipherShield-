@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 
 public class DES
 {
@@ -47,30 +47,85 @@ public class DES
     // Method to handle encryption functionality
     public void EncryptText()
     {
-        do
+        Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
+        string keyString = ValidateHexStringInputForEncryption();
+
+        Console.Write("Enter the plaintext: ");
+        string plaintext = Console.ReadLine();
+
+        // Convert key to byte array
+        byte[] key = HexStringToByteArray(keyString);
+
+        StringBuilder encryptedSentence = new StringBuilder();
+
+        // Split the plaintext into blocks of 64 bits
+        for (int i = 0; i < plaintext.Length; i += 8)
         {
-            Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
-            string keyString = ValidateHexStringInputForEncryption();
+            // Extract a block of 64 bits (8 characters)
+            string block = plaintext.Substring(i, Math.Min(8, plaintext.Length - i));
 
-            Console.Write("Enter the plaintext (8 characters): ");
-            string plaintext = ValidateTextInput(8);
+            // Pad the block to 8 characters if needed
+            block = block.PadRight(8, ' ');
 
-            // Convert key and plaintext to byte arrays
-            byte[] key = HexStringToByteArray(keyString);
-            byte[] data = Encoding.ASCII.GetBytes(plaintext);
+            // Convert the block to a byte array
+            byte[] data = Encoding.ASCII.GetBytes(block);
 
-            // Encrypt the data
+            // Encrypt the data block
             byte[] encryptedData = Encrypt(key, data);
 
-            Console.WriteLine("\nEncrypted Text: ");
-            Console.WriteLine(BitConverter.ToString(encryptedData).Replace("-", ""));
+            // Append the encrypted block to the sentence
+            encryptedSentence.Append(BitConverter.ToString(encryptedData).Replace("-", ""));
+        }
 
-            Console.WriteLine("\nPress any key to continue.");
-            Console.ReadKey();
-            Console.Clear();
-            return;
-        } while (true);
+        Console.WriteLine("\nEncrypted Text:");
+        Console.WriteLine(encryptedSentence.ToString());
+
+        Console.WriteLine("\nPress any key to continue.");
+        Console.ReadKey();
+        Console.Clear();
     }
+
+
+    // Method to handle decryption functionality
+    public void DecryptText()
+    {
+        Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
+        string keyString = ValidateHexStringInputForEncryption();
+
+        Console.Write("Enter the ciphertext: ");
+        string ciphertext = Console.ReadLine();
+
+        // Convert key to byte array
+        byte[] key = HexStringToByteArray(keyString);
+
+        StringBuilder decryptedSentence = new StringBuilder();
+
+        // Split the ciphertext into blocks of 16 characters (128 bits)
+        for (int i = 0; i < ciphertext.Length; i += 16)
+        {
+            // Extract a block of 16 characters
+            string block = ciphertext.Substring(i, Math.Min(16, ciphertext.Length - i));
+
+            // Convert the block to a byte array
+            byte[] data = HexStringToByteArray(block);
+
+            // Decrypt the data block
+            byte[] decryptedData = Decrypt(key, data);
+
+            // Convert the decrypted block to a string and append to the sentence
+            decryptedSentence.Append(Encoding.ASCII.GetString(decryptedData).TrimEnd('\0'));
+        }
+
+        Console.WriteLine("\nDecrypted Text:");
+        Console.WriteLine(decryptedSentence.ToString());
+
+        Console.WriteLine("\nPress any key to continue.");
+        Console.ReadKey();
+        Console.Clear();
+    }
+
+
+
 
     // Helper method for validating text input during encryption
     private string ValidateTextInput(int expectedLength)
@@ -94,30 +149,6 @@ public class DES
             Console.Clear();
         } while (true);
         return input;
-    }
-
-    // Method to handle decryption functionality
-    public void DecryptText()
-    {
-        Console.Write("Enter the 64-bit key in hexadecimal format (16 characters): ");
-        string keyString = ValidateHexStringInputForEncryption();
-
-        Console.Write("Enter the ciphertext (16 characters): ");
-        string ciphertext = ValidateHexStringInputForEncryption();
-
-        // Convert key and ciphertext to byte arrays
-        byte[] key = HexStringToByteArray(keyString);
-        byte[] data = HexStringToByteArray(ciphertext);
-
-        // Decrypt the data
-        byte[] decryptedData = Decrypt(key, data);
-
-        Console.WriteLine("\nDecrypted Text: ");
-        Console.WriteLine(Encoding.ASCII.GetString(decryptedData));
-
-        Console.WriteLine("\nPress any key to continue.");
-        Console.ReadKey();
-        Console.Clear();
     }
 
     // Helper method to validate hexadecimal input during encryption
@@ -202,9 +233,10 @@ public class DES
             temp ^= left;
             left = right;
             right = temp;
+            // Swap
         }
 
-        // Swap left and right before the final permutation
+
         byte[] result = BitConverter.GetBytes(((long)right << 32) | left);
         result = FinalPermutation(result);
 
@@ -274,7 +306,7 @@ public class DES
         }
     }
 
-    // The number of bits to shift left for each round [ 1,2,9,16th round er jnno 1] 
+    // The number of bits to shift left for each round [ 1,2,9,16th round shift value will be 1] 
     private static int[] ShiftBits = {
         1, 1, 2, 2,
         2, 2, 2, 2,
@@ -557,6 +589,19 @@ public class DES
 
         // Return the result of the permutation (P-box)
         return permutedData;
+    }
+
+
+    // Helper method to pad the input to a multiple of 64 bits
+    private string PadToMultipleOf64Bits(string input)
+    {
+        int remainder = input.Length % 8;
+        if (remainder != 0)
+        {
+            // Pad the input to the next multiple of 8 (64 bits)
+            input = input.PadRight(input.Length + 8 - remainder, ' ');
+        }
+        return input;
     }
 
 
