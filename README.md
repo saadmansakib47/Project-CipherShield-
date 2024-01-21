@@ -57,11 +57,11 @@ It also shows an overall strenth score and strenth feedback which is calculated 
 
 The scoring range info is:
 
-Score < 460 : Very Weak
-460 ≤ Score < 500 : Weak
-500 ≤ Score < 600 : Moderate
-600 ≤ Score < 670 : Strong
-670 ≤ Score  : Very Strong
+- Score < 460 : Very Weak
+- 460 ≤ Score < 500 : Weak
+- 500 ≤ Score < 600 : Moderate
+- 600 ≤ Score < 670 : Strong
+- 670 ≤ Score  : Very Strong
 
 ### Encryption
 
