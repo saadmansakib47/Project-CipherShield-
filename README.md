@@ -40,6 +40,7 @@ To run the Project-CipherShiled on your local machine, follow these steps:
 ## Usage
 
 Choose one of the 3 main features of our project-
+
 ![Main Page](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/b6c3d4db-fb80-40bd-b110-92b83bc72463)
 
 ### Password Toolbox
@@ -72,38 +73,46 @@ Encrypts and Decrypts the text/password that the user inputs using common encryp
 #### Substitution Cipher (Vignere Cipher)
 
 1. **Encrypt:** Users have to input a message along with a key
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/5a3e97a1-30ad-43b0-8f66-7a21a549b370)
 
 
 2. **Decrypt:** Users have to input the encrypted text along with the key
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/9122b4d2-ca44-41ff-8e05-b6860185bfc0)
 
 
 #### Transposition Cipher (RailFence Cipher)
 
 1. **Encrypt:** Users have to input a message(in capital form) along with the number of rails
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/77b75d78-7c5c-4a4a-a5b6-e6161b9b2eda)
 
 
 2. **Decrypt:** Users have to input the encrypted text along with the number of rails
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/1b32f08b-d08d-4b83-b325-b0f040cfa17b)
 
 #### Block Cipher (DES)
 
 1. **Encrypt:** Users have to input a 16 character key in hexadecimal format along with the message
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/0044cdae-b465-416a-b9ca-1f0a3b457e55)
 
 
 2. **Decrypt:** Users have to input the 16 character key in hexadecimal format along with the encrypted text
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/e430535b-b019-4795-b079-2a2ab679f05d)
 
 #### RSA
 
 1. **Encrypt:** The program generates a private key`(d, n)` and a public key`(e, n)`. The user have to input the message and gets the ciphertext back based on those keys.
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/2a0df001-6f2a-4a7d-87ab-ef539cb15313)
 
 
 2. **Decrypt:** Users have to input the public exponent`(e)`, private exponent`(d)`, modulus`(n)` and the ciphertext to get the original message back.
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/da4da787-72e3-4c13-b12f-4cba1ea0e00e)
 
 ### Hashing
@@ -113,7 +122,9 @@ Hashes the text/password that the user inputs using common hashing algorithms.
 #### MD5 & SHA-256
 - The user enters a palintext and gets the hashed message back.
 
+
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/e0eb0fba-938c-4dd0-aae3-7093cb5e7621)
+
 
 ![image](https://github.com/saadmansakib47/Project-CipherShield-/assets/112499963/4eb65033-e5ad-47af-8624-6a0de07c46bf)
 
