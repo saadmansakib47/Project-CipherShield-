@@ -30,9 +30,12 @@ To run the Project-CipherShiled on your local machine, follow these steps:
 
 4. Install the project dependencies.
 
-    ```bash
-    npm install
+   ```bash
+    nuget restore
     ```
+   
+   Note: Make sure you have [NuGet](https://www.nuget.org/downloads) installed. The nuget restore command fetches the necessary dependencies for the project.
+  
 5. Make sure you have Visual Studio installed, if not then install it from [https://visualstudio.microsoft.com/downloads/](https://visualstudio.microsoft.com/downloads/)
 
 6. Open Visual Studio. In Visual Studio, click on File > Open > Project/Solution
