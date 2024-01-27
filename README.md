@@ -10,7 +10,7 @@ CipherShield was created out of our passion for CyberSecurity and Cryptogrphic f
 
 # Getting Started
 
-## Installation
+## Installation & Running the application
 
 To run the Project-CipherShiled on your local machine, follow these steps:
 
@@ -35,7 +35,11 @@ To run the Project-CipherShiled on your local machine, follow these steps:
     ```
 5. Make sure you have Visual Studio installed, if not then install it from [https://visualstudio.microsoft.com/downloads/](https://visualstudio.microsoft.com/downloads/)
 
-6. Now click the cloned project on your local machine and run it with Visual Studio.
+6. Open Visual Studio. In Visual Studio, click on File > Open > Project/Solution
+
+7. Navigate to the directory where you cloned the Project-CipherShield- repository, select the solution file (.sln), and click Open.
+
+8. Once the project is open in Visual Studio, locate the Run button (usually a green play button) in the toolbar or press F5 to build and run the application.
 
 ## Usage
 
