@@ -1,8 +1,6 @@
 # Project-CipherShield
 
-
-![CipherShield](https://github.com/saadmansakib47/Project-CipherShield-/assets/134169023/6dc65f5c-dd76-4d12-bc4c-c9fbe0cc5f79)
-
+![Untitled design (1)](https://github.com/saadmansakib47/Project-CipherShield-/assets/134169023/f5672d78-fdb0-4c0d-bfe1-b712c482e426)
 
 ## Introduction
 
