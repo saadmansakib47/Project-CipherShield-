@@ -1,5 +1,7 @@
 # Project-CipherShield
-![Untitled design (1)](https://github.com/saadmansakib47/Project-CipherShield-/assets/134169023/f5672d78-fdb0-4c0d-bfe1-b712c482e426)
+
+![CipherShield](https://github.com/saadmansakib47/Project-CipherShield-/assets/134169023/e526d2c8-d514-420d-b90d-53f997c3caa6)
+
 ## Introduction
 
 Welcome to CipherShield, a security based console application developed in C# using Visual Studio. This application allows users to generate passwords according to their requirement, assess the strength of their password, encrypt and decrypt passwords/texts using different encryption algorithms and finally hash their passwords/texts using different hashing algorithms that have been implemented from scratch.
